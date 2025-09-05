@@ -12,13 +12,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
+import { SidebarTrigger, useSidebar } from "./ui/sidebar";
 
 export default function Navabar() {
   const { theme, setTheme } = useTheme();
+  const { toggleSidebar } = useSidebar();
   return (
     <nav className="p-4 flex items-center justify-between">
       {/* Left */}
-      collapseButton
+      <SidebarTrigger />
+      
+      {/* <Button variant="outline" onClick={toggleSidebar}>
+        Custom Button
+      </Button> */}
       {/* Right */}
       <div className="flex items-center gap-4">
         <Link href="/">Dashboard</Link>
@@ -65,20 +71,6 @@ export default function Navabar() {
               <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
               Logout
             </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="outline" size="icon">
-              <SquareMenu />
-              <span className="sr-only">Open Menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent sideOffset={10}>
-            <DropdownMenuItem>Menu Item 1</DropdownMenuItem>
-            <DropdownMenuItem>Menu Item 2</DropdownMenuItem>
-            <DropdownMenuItem>Menu Item 3</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
